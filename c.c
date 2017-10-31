@@ -5,15 +5,14 @@
 #include <time.h>
 #include <errno.h>
 
-char* getFileInfo(char* filename) {
+void printFileInfo(char* filename) {
   struct stat ap;
-  int stat = stat(filename, ap);
-  char str[] = sprintf("size: %d\ntime: %s",stat.st_size,ctime(&stat.st_time));
-  return str;
+  stat(filename, &ap);
+  printf("size: %lu\ntime: %s", ap.st_size, ctime(&ap.st_atime));
 }
 
 
 int main() {
-  printf(getFileInfo("c.c"));
+  printFileInfo("c.c");
   return 0;
 }
