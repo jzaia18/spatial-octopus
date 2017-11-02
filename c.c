@@ -5,10 +5,11 @@
 #include <time.h>
 #include <errno.h>
 
+//Prints file info
 void printFileInfo(char* filename) {
   struct stat ap;
   stat(filename, &ap);
-  printf("size: %lu\ntime: %s", ap.st_size, ctime(&ap.st_atime));
+  printf("size: %lu\nmode: %o\ntime: %s\n", ap.st_size, ap.st_mode, ctime(&ap.st_atime));
 }
 
 
